@@ -4,10 +4,23 @@
 
   - include_vars: "{{ ansible_distribution }}.yml"
 
-  - name: Ensure Erlang & RabbitMQ are installed
+  - name: install the rabbitmq repo for erlang
+    template:
+      src: rabbitmq-erlang.repo.j2
+      dest: /etc/yum.repos.d/rabbitmq-erlang.repo
+      mode: 0644
+  
+  - name: install Erlang from the rabbitmq repo
     yum:
       name:
         - erlang
+      state: present
+      disablerepo: "{{ centos_repository }}"
+
+
+  - name: Ensure RabbitMQ is installed
+    yum:
+      name:
         - rabbitmq-server
       state: present
       enablerepo: "{{ centos_repository }}"
