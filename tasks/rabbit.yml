@@ -41,6 +41,11 @@
     pause: seconds=3
     when: rabbitmq_state|changed
 
+  - name: make sure you can become the rabbitmq user
+    user:
+      name: rabbitmq
+      shell: /bin/bash
+
   - block:
     - name: Ensure Sensu RabbitMQ vhost exists
       rabbitmq_vhost: name={{ rabbitmq_sensu_vhost }} state=present
