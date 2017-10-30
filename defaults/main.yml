@@ -40,7 +40,7 @@ rabbitmq_server: false
 rabbitmq_service_name: rabbitmq-server
 rabbitmq_sensu_user_name: sensu
 rabbitmq_sensu_password: sensu
-rabbitmq_sensu_vhost: /
+rabbitmq_sensu_vhost: /sensu
 rabbitmq_erlang_version: 19
 
 # redis server properties
